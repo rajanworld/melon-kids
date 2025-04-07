@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Photos - MelonKids</title>
+    <meta name="description" content="Manage your photo library for MelonKids personalized books. Upload, organize, and select photos to use in your personalized storybooks.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index.html">
+                            <h1 class="text-2xl font-bold text-indigo-600">MelonKids</h1>
+                        </a>
+                    </div>
+                    <nav class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Home
+                        </a>
+                        <a href="kids-books.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Books for Kids
+                        </a>
+                        <a href="adult-books.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Books for Grown-Ups
+                        </a>
+                        <a href="about.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            About Us
+                        </a>
+                        <a href="contact.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            FAQs & Contact
+                        </a>
+                    </nav>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="dashboard.html" class="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard layout -->
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 border-r border-gray-200 bg-white">
+                <div class="h-0 flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+                    <div class="flex items-center flex-shrink-0 px-4">
+                        <span class="text-xl font-semibold text-gray-800">My Account</span>
+                    </div>
+                    <nav class="mt-5 flex-1 px-4 space-y-1">
+                        <a href="dashboard.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            Dashboard
+                        </a>
+                        <a href="orders.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            My Orders
+                        </a>
+                        <a href="photos.html" class="bg-indigo-50 text-indigo-600 hover:bg-indigo-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            My Photos
+                        </a>
+                        <a href="settings.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            Account Settings
+                        </a>
+                        <div class="pt-4 mt-4 border-t border-gray-200">
+                            <a href="index.html" class="text-red-600 hover:bg-red-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                                Logout
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="flex flex-col w-0 flex-1 overflow-hidden">
+            <main class="flex-1 relative overflow-y-auto focus:outline-none">
+                <div class="py-6">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <div class="flex items-center justify-between">
+                            <h1 class="text-2xl font-semibold text-gray-900">My Photos</h1>
+                            <div>
+                                <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Upload Photos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Photo upload section -->
+                        <div class="mt-6 bg-white shadow sm:rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">Upload New Photos</h3>
+                                <div class="mt-2 max-w-xl text-sm text-gray-500">
+                                    <p>Select images to add to your photo library. For best results, use high-resolution photos (at least 1080px) with clear faces.</p>
+                                </div>
+                                <div class="mt-5">
+                                    <div class="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                        <div class="space-y-1 text-center">
+                                            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <div class="flex text-sm text-gray-600">
+                                                <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                                    <span>Upload files</span>
+                                                    <input id="file-upload" name="file-upload" type="file" class="sr-only" multiple>
+                                                </label>
+                                                <p class="pl-1">or drag and drop</p>
+                                            </div>
+                                            <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            Add to Library
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo grid -->
+                        <div class="mt-8">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Your Photo Library</h3>
+                            <div class="mt-1 text-sm text-gray-500">
+                                <p>You currently have 18 photos in your library.</p>
+                            </div>
+                            <div class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                                <!-- Photo 1 -->
+                                <div class="relative group">
+                                    <div class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1534960680480-ca9853707e10?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074&q=80" alt="Photo of a child" class="object-cover h-32 w-full">
+                                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-200"></div>
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                            <button type="button" class="bg-white rounded-full p-1 text-gray-400 hover:text-red-500 focus:outline-none">
+                                                <span class="sr-only">Delete</span>
+                                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 text-sm text-gray-500">
+                                        <p>Uploaded: May 23, 2023</p>
+                                    </div>
+                                </div>
+
+                                <!-- Photo 2 -->
+                                <div class="relative group">
+                                    <div class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1492269682833-cd80a18ccc47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Photo of a child" class="object-cover h-32 w-full">
+                                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-200"></div>
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                            <button type="button" class="bg-white rounded-full p-1 text-gray-400 hover:text-red-500 focus:outline-none">
+                                                <span class="sr-only">Delete</span>
+                                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 text-sm text-gray-500">
+                                        <p>Uploaded: May 20, 2023</p>
+                                    </div>
+                                </div>
+
+                                <!-- Photo 3 -->
+                                <div class="relative group">
+                                    <div class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1633934542430-0905ccb5f212?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80" alt="Photo of a child" class="object-cover h-32 w-full">
+                                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-200"></div>
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                            <button type="button" class="bg-white rounded-full p-1 text-gray-400 hover:text-red-500 focus:outline-none">
+                                                <span class="sr-only">Delete</span>
+                                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 text-sm text-gray-500">
+                                        <p>Uploaded: May 20, 2023</p>
+                                    </div>
+                                </div>
+
+                                <!-- Photo 4 -->
+                                <div class="relative group">
+                                    <div class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1617244147046-7eac6aa70bc8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Photo of a child" class="object-cover h-32 w-full">
+                                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-200"></div>
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                            <button type="button" class="bg-white rounded-full p-1 text-gray-400 hover:text-red-500 focus:outline-none">
+                                                <span class="sr-only">Delete</span>
+                                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 text-sm text-gray-500">
+                                        <p>Uploaded: May 18, 2023</p>
+                                    </div>
+                                </div>
+
+                                <!-- More photos... (similar structure) -->
+                                <!-- Show more button -->
+                                <div class="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-6 mt-4">
+                                    <button type="button" class="w-full py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Load More Photos
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">MelonKids</h3>
+                    <p class="mt-4 text-base text-gray-300">
+                        Creating joy through personalized books - magical adventures for kids & touching tributes for adults.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">About</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="about.html" class="text-base text-gray-300 hover:text-white">About Us</a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="text-base text-gray-300 hover:text-white">FAQs & Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Books</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="kids-books.html" class="text-base text-gray-300 hover:text-white">Books for Kids</a>
+                        </li>
+                        <li>
+                            <a href="adult-books.html" class="text-base text-gray-300 hover:text-white">Books for Grown-Ups</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Legal</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li>
+                            <a href="privacy.html" class="text-base text-gray-300 hover:text-white">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="terms.html" class="text-base text-gray-300 hover:text-white">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8">
+                <p class="text-base text-gray-400">&copy; 2025, MelonKids Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MelonKids Admin - Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .sidebar-active {
+            background-color: rgba(79, 70, 229, 0.1);
+            border-left: 4px solid #4F46E5;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 bg-white border-r border-gray-200">
+                <div class="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto">
+                    <div class="flex items-center flex-shrink-0 px-4">
+                        <span class="text-xl font-bold text-indigo-600">MelonKids Admin</span>
+                    </div>
+                    <div class="mt-8 flex-grow flex flex-col">
+                        <nav class="flex-1 px-2 space-y-1">
+                            <a href="admin-dashboard.html" class="group flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                <i class="fas fa-tachometer-alt mr-3 text-gray-400 group-hover:text-gray-500"></i>
+                                Dashboard
+                            </a>
+                            <a href="admin-orders.html" class="group flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                <i class="fas fa-shopping-cart mr-3 text-gray-400 group-hover:text-gray-500"></i>
+                                Orders
+                            </a>
+                            <a href="admin-products.html" class="group flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                <i class="fas fa-book mr-3 text-gray-400 group-hover:text-gray-500"></i>
+                                Products
+                            </a>
+                            <a href="admin-customers.html" class="group flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                <i class="fas fa-users mr-3 text-gray-400 group-hover:text-gray-500"></i>
+                                Customers
+                            </a>
+                            <a href="admin-blog.html" class="group flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                <i class="fas fa-newspaper mr-3 text-gray-400 group-hover:text-gray-500"></i>
+                                Blog
+                            </a>
+                            <a href="admin-settings.html" class="group flex items-center px-2 py-3 text-sm font-medium rounded-md sidebar-active text-indigo-600">
+                                <i class="fas fa-cog mr-3 text-indigo-500"></i>
+                                Settings
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
+                    <a href="admin-profile.html" class="flex-shrink-0 group block">
+                        <div class="flex items-center">
+                            <div>
+                                <img class="inline-block h-10 w-10 rounded-full" src="https://placehold.co/100x100" alt="Admin profile">
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-base font-medium text-gray-700 group-hover:text-gray-900">
+                                    Admin User
+                                </p>
+                                <p class="text-sm font-medium text-gray-500 group-hover:text-gray-700">
+                                    View Profile
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col w-0 flex-1 overflow-hidden">
+            <!-- Top Navigation -->
+            <div class="relative z-10 flex-shrink-0 flex h-16 bg-white shadow">
+                <button type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
+                    <span class="sr-only">Open sidebar</span>
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="flex-1 px-4 flex justify-between">
+                    <div class="flex-1 flex">
+                        <form class="w-full flex md:ml-0" action="#" method="GET">
+                            <label for="search-field" class="sr-only">Search</label>
+                            <div class="relative w-full text-gray-400 focus-within:text-gray-600">
+                                <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                                    <i class="fas fa-search ml-3"></i>
+                                </div>
+                                <input id="search-field" class="block w-full h-full pl-10 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm" placeholder="Search" type="search" name="search">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <span class="sr-only">View notifications</span>
+                            <i class="fas fa-bell"></i>
+                        </button>
+
+                        <!-- Profile dropdown -->
+                        <div class="ml-3 relative">
+                            <div>
+                                <button type="button" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                    <span class="sr-only">Open user menu</span>
+                                    <img class="h-8 w-8 rounded-full" src="https://placehold.co/100x100" alt="Admin profile">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <main class="flex-1 relative overflow-y-auto focus:outline-none">
+                <div class="py-6">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <h1 class="text-2xl font-semibold text-gray-900">Settings</h1>
+                    </div>
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <!-- Settings Tabs -->
+                        
+
+                        <!-- General Settings Form -->
+                        <div class="mt-6 bg-white shadow rounded-lg p-6">
+                            <div class="md:grid md:grid-cols-3 md:gap-6">
+                                <div class="md:col-span-1">
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900">Store Information</h3>
+                                    <p class="mt-1 text-sm text-gray-500">
+                                        Basic information about your store.
+                                    </p>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <form action="#" method="POST">
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="store-name" class="block text-sm font-medium text-gray-700">Store name</label>
+                                                <input type="text" name="store-name" id="store-name" value="MelonKids" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="store-email" class="block text-sm font-medium text-gray-700">Store email address</label>
+                                                <input type="email" name="store-email" id="store-email" value="contact@melonkids.com" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6">
+                                                <label for="store-address" class="block text-sm font-medium text-gray-700">Store address</label>
+                                                <input type="text" name="store-address" id="store-address" value="123 Book Lane, Reading, CA 90210" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                                <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                                                <input type="text" name="city" id="city" value="Reading" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                                <label for="state" class="block text-sm font-medium text-gray-700">State / Province</label>
+                                                <input type="text" name="state" id="state" value="CA" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                                <label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP / Postal code</label>
+                                                <input type="text" name="postal-code" id="postal-code" value="90210" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                                                <select id="country" name="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                    <option selected>United States</option>
+                                                    <option>Canada</option>
+                                                    <option>Mexico</option>
+                                                    <option>United Kingdom</option>
+                                                    <option>Australia</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="currency" class="block text-sm font-medium text-gray-700">Currency</label>
+                                                <select id="currency" name="currency" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                    <option selected>USD ($)</option>
+                                                    <option>EUR (€)</option>
+                                                    <option>GBP (£)</option>
+                                                    <option>CAD (C$)</option>
+                                                    <option>AUD (A$)</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-span-6">
+                                                <label for="store-description" class="block text-sm font-medium text-gray-700">Store description</label>
+                                                <textarea id="store-description" name="store-description" rows="3" class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md">MelonKids offers personalized storybooks that make children the heroes of their own adventures. Our mission is to inspire a love of reading through custom stories that capture a child's imagination.</textarea>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hidden sm:block" aria-hidden="true">
+                            <div class="py-5">
+                                <div class="border-t border-gray-200"></div>
+                            </div>
+                        </div>
+
+                        <!-- Logo and Favicon Settings -->
+                        <div class="mt-6 bg-white shadow rounded-lg p-6">
+                            <div class="md:grid md:grid-cols-3 md:gap-6">
+                                <div class="md:col-span-1">
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900">Logo & Favicon</h3>
+                                    <p class="mt-1 text-sm text-gray-500">
+                                        Upload your store logo and favicon.
+                                    </p>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <form action="#" method="POST">
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <div class="col-span-6">
+                                                <label class="block text-sm font-medium text-gray-700">
+                                                    Store logo
+                                                </label>
+                                                <div class="mt-1 flex items-center">
+                                                    <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                                                        <img src="https://placehold.co/100x100" alt="Store logo">
+                                                    </span>
+                                                    <button type="button" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                        Change
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-span-6">
+                                                <label class="block text-sm font-medium text-gray-700">
+                                                    Favicon
+                                                </label>
+                                                <div class="mt-1 flex items-center">
+                                                    <span class="inline-block h-8 w-8 rounded overflow-hidden bg-gray-100">
+                                                        <img src="https://placehold.co/32x32" alt="Favicon">
+                                                    </span>
+                                                    <button type="button" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                        Change
+                                                    </button>
+                                                </div>
+                                                <p class="mt-2 text-sm text-gray-500">
+                                                    Recommended size: 32x32 pixels
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hidden sm:block" aria-hidden="true">
+                            <div class="py-5">
+                                <div class="border-t border-gray-200"></div>
+                            </div>
+                        </div>
+
+                        <!-- Social Media Settings -->
+                        <div class="mt-6 bg-white shadow rounded-lg p-6">
+                            <div class="md:grid md:grid-cols-3 md:gap-6">
+                                <div class="md:col-span-1">
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900">Social Media</h3>
+                                    <p class="mt-1 text-sm text-gray-500">
+                                        Connect your store with social media platforms.
+                                    </p>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <form action="#" method="POST">
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <div class="col-span-6 sm:col-span-4">
+                                                <label for="facebook" class="block text-sm font-medium text-gray-700">Facebook</label>
+                                                <div class="mt-1 flex rounded-md shadow-sm">
+                                                    <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                                                        https://facebook.com/
+                                                    </span>
+                                                    <input type="text" name="facebook" id="facebook" value="melonkids" class="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-4">
+                                                <label for="instagram" class="block text-sm font-medium text-gray-700">Instagram</label>
+                                                <div class="mt-1 flex rounded-md shadow-sm">
+                                                    <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                                                        https://instagram.com/
+                                                    </span>
+                                                    <input type="text" name="instagram" id="instagram" value="melonkids_books" class="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-4">
+                                                <label for="twitter" class="block text-sm font-medium text-gray-700">Twitter</label>
+                                                <div class="mt-1 flex rounded-md shadow-sm">
+                                                    <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                                                        https://twitter.com/
+                                                    </span>
+                                                    <input type="text" name="twitter" id="twitter" value="melonkids" class="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-4">
+                                                <label for="pinterest" class="block text-sm font-medium text-gray-700">Pinterest</label>
+                                                <div class="mt-1 flex rounded-md shadow-sm">
+                                                    <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                                                        https://pinterest.com/
+                                                    </span>
+                                                    <input type="text" name="pinterest" id="pinterest" value="melonkids_books" class="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Save Button -->
+                        <div class="mt-6 flex justify-end">
+                            <button type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-3">
+                                Cancel
+                            </button>
+                            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

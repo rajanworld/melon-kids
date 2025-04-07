@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MelonKids Admin - Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .sidebar-active {
+            background-color: rgba(79, 70, 229, 0.1);
+            border-left: 4px solid #4F46E5;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 bg-white border-r border-gray-200">
+                <div class="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto">
+                    <div class="flex items-center flex-shrink-0 px-4">
+                        <span class="text-xl font-bold text-indigo-600">MelonKids Admin</span>
+                    </div>
+                    <div class="mt-8 flex-grow flex flex-col">
+                        <nav class="flex-1 px-2 space-y-1">
+                            <a href="admin-dashboard.html" class="group flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                <i class="fas fa-tachometer-alt mr-3 text-gray-400 group-hover:text-gray-500"></i>
+                                Dashboard
+                            </a>
+                            <a href="admin-orders.html" class="group flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                <i class="fas fa-shopping-cart mr-3 text-gray-400 group-hover:text-gray-500"></i>
+                                Orders
+                            </a>
+                            <a href="admin-products.html" class="group flex items-center px-2 py-3 text-sm font-medium rounded-md sidebar-active text-indigo-600">
+                                <i class="fas fa-book mr-3 text-indigo-500"></i>
+                                Products
+                            </a>
+                            <a href="admin-customers.html" class="group flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                <i class="fas fa-users mr-3 text-gray-400 group-hover:text-gray-500"></i>
+                                Customers
+                            </a>
+                            <a href="admin-blog.html" class="group flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                <i class="fas fa-newspaper mr-3 text-gray-400 group-hover:text-gray-500"></i>
+                                Blog
+                            </a>
+                            <a href="admin-settings.html" class="group flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                <i class="fas fa-cog mr-3 text-gray-400 group-hover:text-gray-500"></i>
+                                Settings
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
+                    <a href="admin-profile.html" class="flex-shrink-0 group block">
+                        <div class="flex items-center">
+                            <div>
+                                <img class="inline-block h-10 w-10 rounded-full" src="https://placehold.co/100x100" alt="Admin profile">
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-base font-medium text-gray-700 group-hover:text-gray-900">
+                                    Admin User
+                                </p>
+                                <p class="text-sm font-medium text-gray-500 group-hover:text-gray-700">
+                                    View Profile
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col w-0 flex-1 overflow-hidden">
+            <!-- Top Navigation -->
+            <div class="relative z-10 flex-shrink-0 flex h-16 bg-white shadow">
+                <button type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
+                    <span class="sr-only">Open sidebar</span>
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="flex-1 px-4 flex justify-between">
+                    <div class="flex-1 flex">
+                        <form class="w-full flex md:ml-0" action="#" method="GET">
+                            <label for="search-field" class="sr-only">Search</label>
+                            <div class="relative w-full text-gray-400 focus-within:text-gray-600">
+                                <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                                    <i class="fas fa-search ml-3"></i>
+                                </div>
+                                <input id="search-field" class="block w-full h-full pl-10 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm" placeholder="Search products" type="search" name="search">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <span class="sr-only">View notifications</span>
+                            <i class="fas fa-bell"></i>
+                        </button>
+
+                        <!-- Profile dropdown -->
+                        <div class="ml-3 relative">
+                            <div>
+                                <button type="button" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                    <span class="sr-only">Open user menu</span>
+                                    <img class="h-8 w-8 rounded-full" src="https://placehold.co/100x100" alt="Admin profile">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <main class="flex-1 relative overflow-y-auto focus:outline-none">
+                <div class="py-6">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <div class="flex justify-between items-center">
+                            <h1 class="text-2xl font-semibold text-gray-900">Products</h1>
+                            <div>
+                                <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <i class="fas fa-plus mr-2"></i> Add Product
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <!-- Filters -->
+                        <div class="mt-6 bg-white shadow rounded-lg p-4">
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                <div>
+                                    <label for="category-filter" class="block text-sm font-medium text-gray-700">Category</label>
+                                    <select id="category-filter" name="category-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                        <option value="">All Categories</option>
+                                        <option value="kids">Books for Kids</option>
+                                        <option value="adults">Books for Adults</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="age-filter" class="block text-sm font-medium text-gray-700">Age Range</label>
+                                    <select id="age-filter" name="age-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                        <option value="">All Ages</option>
+                                        <option value="3-5">3-5 years</option>
+                                        <option value="6-8">6-8 years</option>
+                                        <option value="9-12">9-12 years</option>
+                                        <option value="adult">Adult</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="status-filter" class="block text-sm font-medium text-gray-700">Status</label>
+                                    <select id="status-filter" name="status-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                        <option value="">All Status</option>
+                                        <option value="active">Active</option>
+                                        <option value="draft">Draft</option>
+                                        <option value="archived">Archived</option>
+                                    </select>
+                                </div>
+                                <div class="flex items-end">
+                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        <i class="fas fa-filter mr-2"></i> Apply Filters
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Products Grid -->
+                        <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            <!-- Product Card 1 -->
+                            <div class="bg-white overflow-hidden shadow rounded-lg">
+                                <div class="p-5">
+                                    <div class="flex justify-between">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            Active
+                                        </span>
+                                        <div class="flex space-x-2">
+                                            <button type="button" class="text-gray-400 hover:text-gray-500">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="text-gray-400 hover:text-red-500">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 flex justify-center">
+                                        <img class="h-48 w-auto object-cover" src="../public/images/1.webp" alt="Space Explorer Adventure">
+                                    </div>
+                                    <div class="mt-4">
+                                        <h3 class="text-lg font-medium text-gray-900">Space Explorer Adventure</h3>
+                                        <p class="mt-1 text-sm text-gray-500">A personalized journey through space for curious young minds.</p>
+                                        <div class="mt-3 flex justify-between items-center">
+                                            <div class="text-lg font-medium text-gray-900">$29.99</div>
+                                            <div class="text-sm text-gray-500">Stock: 125</div>
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star-half-alt text-yellow-400"></i>
+                                            </div>
+                                            <span class="ml-2 text-sm text-gray-500">(42 reviews)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 px-5 py-3">
+                                    <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 2 -->
+                            <div class="bg-white overflow-hidden shadow rounded-lg">
+                                <div class="p-5">
+                                    <div class="flex justify-between">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            Active
+                                        </span>
+                                        <div class="flex space-x-2">
+                                            <button type="button" class="text-gray-400 hover:text-gray-500">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="text-gray-400 hover:text-red-500">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 flex justify-center">
+                                        <img class="h-48 w-auto object-cover" src="../public/images/1.webp" alt="Dinosaur Discovery">
+                                    </div>
+                                    <div class="mt-4">
+                                        <h3 class="text-lg font-medium text-gray-900">Dinosaur Discovery</h3>
+                                        <p class="mt-1 text-sm text-gray-500">An exciting prehistoric adventure with dinosaurs and volcanoes.</p>
+                                        <div class="mt-3 flex justify-between items-center">
+                                            <div class="text-lg font-medium text-gray-900">$24.99</div>
+                                            <div class="text-sm text-gray-500">Stock: 87</div>
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="far fa-star text-yellow-400"></i>
+                                            </div>
+                                            <span class="ml-2 text-sm text-gray-500">(36 reviews)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 px-5 py-3">
+                                    <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 3 -->
+                            <div class="bg-white overflow-hidden shadow rounded-lg">
+                                <div class="p-5">
+                                    <div class="flex justify-between">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            Active
+                                        </span>
+                                        <div class="flex space-x-2">
+                                            <button type="button" class="text-gray-400 hover:text-gray-500">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="text-gray-400 hover:text-red-500">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 flex justify-center">
+                                        <img class="h-48 w-auto object-cover" src="../public/images/1.webp" alt="Underwater Adventure">
+                                    </div>
+                                    <div class="mt-4">
+                                        <h3 class="text-lg font-medium text-gray-900">Underwater Adventure</h3>
+                                        <p class="mt-1 text-sm text-gray-500">Dive into an ocean of imagination with sea creatures and mermaids.</p>
+                                        <div class="mt-3 flex justify-between items-center">
+                                            <div class="text-lg font-medium text-gray-900">$29.99</div>
+                                            <div class="text-sm text-gray-500">Stock: 103</div>
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                            </div>
+                                            <span class="ml-2 text-sm text-gray-500">(51 reviews)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 px-5 py-3">
+                                    <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 4 -->
+                            <div class="bg-white overflow-hidden shadow rounded-lg">
+                                <div class="p-5">
+                                    <div class="flex justify-between">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            Active
+                                        </span>
+                                        <div class="flex space-x-2">
+                                            <button type="button" class="text-gray-400 hover:text-gray-500">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="text-gray-400 hover:text-red-500">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 flex justify-center">
+                                        <img class="h-48 w-auto object-cover" src="../public/images/1.webp" alt="Magical Princess">
+                                    </div>
+                                    <div class="mt-4">
+                                        <h3 class="text-lg font-medium text-gray-900">Magical Princess</h3>
+                                        <p class="mt-1 text-sm text-gray-500">A royal adventure in an enchanted kingdom with fairies and unicorns.</p>
+                                        <div class="mt-3 flex justify-between items-center">
+                                            <div class="text-lg font-medium text-gray-900">$24.99</div>
+                                            <div class="text-sm text-gray-500">Stock: 92</div>
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star-half-alt text-yellow-400"></i>
+                                            </div>
+                                            <span class="ml-2 text-sm text-gray-500">(47 reviews)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 px-5 py-3">
+                                    <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 5 -->
+                            <div class="bg-white overflow-hidden shadow rounded-lg">
+                                <div class="p-5">
+                                    <div class="flex justify-between">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            Active
+                                        </span>
+                                        <div class="flex space-x-2">
+                                            <button type="button" class="text-gray-400 hover:text-gray-500">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="text-gray-400 hover:text-red-500">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 flex justify-center">
+                                        <img class="h-48 w-auto object-cover" src="../public/images/1.webp" alt="Superhero Adventure">
+                                    </div>
+                                    <div class="mt-4">
+                                        <h3 class="text-lg font-medium text-gray-900">Superhero Adventure</h3>
+                                        <p class="mt-1 text-sm text-gray-500">Save the day with super powers and heroic deeds in this action-packed story.</p>
+                                        <div class="mt-3 flex justify-between items-center">
+                                            <div class="text-lg font-medium text-gray-900">$29.99</div>
+                                            <div class="text-sm text-gray-500">Stock: 78</div>
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="far fa-star text-yellow-400"></i>
+                                            </div>
+                                            <span class="ml-2 text-sm text-gray-500">(39 reviews)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 px-5 py-3">
+                                    <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 6 -->
+                            <div class="bg-white overflow-hidden shadow rounded-lg">
+                                <div class="p-5">
+                                    <div class="flex justify-between">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                            Draft
+                                        </span>
+                                        <div class="flex space-x-2">
+                                            <button type="button" class="text-gray-400 hover:text-gray-500">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="text-gray-400 hover:text-red-500">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 flex justify-center">
+                                        <img class="h-48 w-auto object-cover" src="../public/images/1.webp" alt="Jungle Safari">
+                                    </div>
+                                    <div class="mt-4">
+                                        <h3 class="text-lg font-medium text-gray-900">Jungle Safari</h3>
+                                        <p class="mt-1 text-sm text-gray-500">Explore wild animals and exotic landscapes in this thrilling adventure.</p>
+                                        <div class="mt-3 flex justify-between items-center">
+                                            <div class="text-lg font-medium text-gray-900">$24.99</div>
+                                            <div class="text-sm text-gray-500">Stock: 0</div>
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-gray-300"></i>
+                                                <i class="fas fa-star text-gray-300"></i>
+                                                <i class="fas fa-star text-gray-300"></i>
+                                                <i class="fas fa-star text-gray-300"></i>
+                                                <i class="fas fa-star text-gray-300"></i>
+                                            </div>
+                                            <span class="ml-2 text-sm text-gray-500">(0 reviews)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 px-5 py-3">
+                                    <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="mt-6 bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6 rounded-lg">
+                            <div class="flex-1 flex justify-between sm:hidden">
+                                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                    Previous
+                                </a>
+                                <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                    Next
+                                </a>
+                            </div>
+                            <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-700">
+                                        Showing <span class="font-medium">1</span> to <span class="font-medium">6</span> of <span class="font-medium">12</span> results
+                                    </p>
+                                </div>
+                                <div>
+                                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                            <span class="sr-only">Previous</span>
+                                            <i class="fas fa-chevron-left h-5 w-5"></i>
+                                        </a>
+                                        <a href="#" aria-current="page" class="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                            1
+                                        </a>
+                                        <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                            2
+                                        </a>
+                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                            <span class="sr-only">Next</span>
+                                            <i class="fas fa-chevron-right h-5 w-5"></i>
+                                        </a>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
